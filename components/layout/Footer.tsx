@@ -1,0 +1,152 @@
+'use client';
+
+import Link from 'next/link';
+import NewsletterForm from './NewsletterForm';
+import { Mail, Phone } from 'lucide-react';
+import { FaTwitter, FaLinkedin, FaGithub, FaInstagram, FaYoutube } from 'react-icons/fa';
+
+const footerLinks = {
+  company: [
+    { label: 'About Us', href: '/about' },
+    { label: 'Our Team', href: '/about#team' },
+    { label: 'Careers', href: '/careers' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Case Studies', href: '/case-studies' },
+  ],
+  services: [
+    { label: 'Web Development', href: '/services/web-development' },
+    { label: 'Mobile Apps', href: '/services/mobile-apps' },
+    { label: 'AI Solutions', href: '/services/ai-solutions' },
+    { label: 'Cloud Services', href: '/services/cloud-solutions' },
+    { label: 'UI/UX Design', href: '/services/ui-ux-design' },
+    { label: 'SEO & Marketing', href: '/services/seo' },
+  ],
+  portfolio: [
+    { label: 'All Projects', href: '/portfolio' },
+    { label: 'Web Projects', href: '/portfolio?filter=web' },
+    { label: 'Mobile Projects', href: '/portfolio?filter=mobile' },
+    { label: 'AI Projects', href: '/portfolio?filter=ai' },
+  ],
+  legal: [
+    { label: 'Privacy Policy', href: '/privacy' },
+    { label: 'Terms of Service', href: '/terms' },
+    { label: 'Cookie Policy', href: '/cookies' },
+    { label: 'Sitemap', href: '/sitemap.xml' },
+  ],
+};
+
+const socialLinks = [
+  { icon: FaTwitter, href: 'https://twitter.com/techvision', label: 'Twitter' },
+  { icon: FaLinkedin, href: 'https://linkedin.com/company/techvision', label: 'LinkedIn' },
+  { icon: FaGithub, href: 'https://github.com/techvision', label: 'GitHub' },
+  { icon: FaInstagram, href: 'https://instagram.com/techvision', label: 'Instagram' },
+  { icon: FaYoutube, href: 'https://youtube.com/techvision', label: 'YouTube' },
+];
+
+export default function Footer() {
+  return (
+    <footer className="relative bg-[var(--surface)] border-t border-[var(--border)] overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-32 -left-32 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl" />
+        <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-secondary-500/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Newsletter */}
+        <div className="py-12 border-b border-[var(--border)]">
+          <div className="glass-card p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+              <h3 className="text-xl font-heading font-bold text-[var(--foreground)] mb-1">
+                Stay ahead with TechVision
+              </h3>
+              <p className="text-[var(--muted)] text-sm">
+                Get the latest insights on technology, AI, and digital trends.
+              </p>
+            </div>
+            <NewsletterForm />
+          </div>
+        </div>
+
+        {/* Main Footer */}
+        <div className="py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+          {/* Brand */}
+          <div className="lg:col-span-2">
+            <Link href="/" className="flex items-center gap-2 mb-4">
+              <div className="w-9 h-9 rounded-xl gradient-bg flex items-center justify-center shadow-lg">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-white">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <span className="font-heading font-bold text-xl gradient-text">TechVision</span>
+            </Link>
+            <p className="text-[var(--muted)] text-sm leading-relaxed mb-6 max-w-xs">
+              Transforming businesses through innovative technology solutions. We build scalable, modern digital products that drive growth.
+            </p>
+            {/* Contact Info */}
+            <div className="space-y-3">
+              <a href="mailto:hello@techvision.io" className="flex items-center gap-3 text-[var(--muted)] hover:text-primary-500 transition-colors text-sm group">
+                <div className="w-8 h-8 rounded-lg bg-primary-500/10 flex items-center justify-center group-hover:bg-primary-500/20 transition-colors">
+                  <Mail size={14} className="text-primary-500" />
+                </div>
+                hello@techvision.io
+              </a>
+              <a href="tel:+917416858563" className="flex items-center gap-3 text-[var(--muted)] hover:text-primary-500 transition-colors text-sm group">
+                <div className="w-8 h-8 rounded-lg bg-primary-500/10 flex items-center justify-center group-hover:bg-primary-500/20 transition-colors">
+                  <Phone size={14} className="text-primary-500" />
+                </div>
+                +91 74168 58563
+              </a>
+            </div>
+          </div>
+
+          {/* Links */}
+          {[
+            { title: 'Company', links: footerLinks.company },
+            { title: 'Services', links: footerLinks.services },
+            { title: 'Legal', links: footerLinks.legal },
+          ].map((section) => (
+            <div key={section.title}>
+              <h4 className="font-heading font-semibold text-[var(--foreground)] mb-4 text-sm uppercase tracking-wider">
+                {section.title}
+              </h4>
+              <ul className="space-y-2.5">
+                {section.links.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-[var(--muted)] hover:text-primary-500 text-sm transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="py-6 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-[var(--muted)] text-sm">
+            © {new Date().getFullYear()} TechVision. All rights reserved. Built with ❤️ using Next.js
+          </p>
+          <div className="flex items-center gap-3">
+            {socialLinks.map(({ icon: Icon, href, label }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="w-9 h-9 rounded-xl bg-[var(--surface-2)] border border-[var(--border)] flex items-center justify-center text-[var(--muted)] hover:text-primary-500 hover:border-primary-500/50 hover:bg-primary-500/10 transition-all duration-200"
+              >
+                <Icon size={16} />
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
