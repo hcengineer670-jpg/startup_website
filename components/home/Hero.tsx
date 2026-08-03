@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, ArrowRight } from 'lucide-react';
 
 const stats = [
   { value: '500+', label: 'Projects Delivered' },
@@ -84,7 +84,7 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="flex flex-col sm:flex-row gap-4 mb-12 w-full sm:w-auto"
             >
-              <a
+              
                 href="https://wa.me/917416858563"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -100,7 +100,7 @@ export default function Hero() {
               >
                 {/* Light shimmer sweep animation */}
                 <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none" />
-                
+
                 {/* Glowing border background aura */}
                 <span className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-primary-400 via-secondary-400 to-accent-400 opacity-0 group-hover:opacity-30 blur-md transition-opacity duration-300 pointer-events-none" />
 
